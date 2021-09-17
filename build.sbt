@@ -1,13 +1,17 @@
 val scala2Version = "2.13.6"
-val scala3Version = "3.0.1"
+val scala3Version = "3.0.2"
 
 lazy val root = project
   .in(file("."))
   .settings(
     name := "scala3-cross",
     version := "0.1.0",
-
-    libraryDependencies += "com.novocode" % "junit-interface" % "0.11" % Test,
+    
+    libraryDependencies ++= Seq(
+      "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+      "org.scalatestplus" %% "scalacheck-1-15" % "3.2.9.0" % Test,
+      "com.novocode" % "junit-interface" % "0.11" % Test
+    ),
 
     // To make the default compiler and REPL use Dotty
     scalaVersion := scala3Version,
