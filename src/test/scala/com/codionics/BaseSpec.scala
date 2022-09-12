@@ -6,9 +6,7 @@ import org.scalatest.{EitherValues, OptionValues}
 import org.scalatestplus.scalacheck.ScalaCheckDrivenPropertyChecks
 
 abstract class BaseSpec
-  extends AnyWordSpec
+    extends AnyWordSpec
     with should.Matchers
     with OptionValues
-    with ScalaCheckDrivenPropertyChecks {
-
-}
+    with ScalaCheckDrivenPropertyChecks {}
