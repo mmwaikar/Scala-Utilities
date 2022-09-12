@@ -31,7 +31,7 @@ case class CD3(c: Int, d: EFG)
 case class AB3(a: String, b: CD2)
 case class AB4(a: String, b: CD3)
 
-class MapOpsSpec extends BaseSpec:
+class MapUtilsSpec extends BaseSpec:
   val defaultLocalDateTimeUTC: LocalDateTime =
     LocalDateTime.of(2021, 1, 1, 10, 20, 30)
   val defaultLocalDateTimeIST: LocalDateTime =
