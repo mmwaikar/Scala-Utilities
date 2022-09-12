@@ -2,6 +2,8 @@ package com.codionics
 
 import com.codionics.CaseClassUtils.*
 
+case class CCOptionalFields(name: String, age: Option[Int] = None)
+
 class CaseClassUtilsSpec extends BaseSpec {
 
   "Given CaseClassUtils" when {
@@ -31,6 +33,33 @@ class CaseClassUtilsSpec extends BaseSpec {
         val tm = ab4.toMap
         tm should not be null
         println(s"ab4 to map: $tm")
+      }
+    }
+
+    "toMap method is called for a case class with None optional values" should {
+      "return a map with empty map for None optional values" in {
+        val cc = CCOptionalFields("FL")
+        val m = cc.toMap
+        m should not be null
+        println(s"cc to map with option: $m")
+      }
+    }
+
+    "toMapWithNoKeysForEmptyOptionalValues method is called" should {
+      "return a map with no keys for None optional values" in {
+        val cc = CCOptionalFields("FL")
+        val m = cc.toMapWithNoKeysForEmptyOptionalValues
+        m should not be null
+        println(s"cc to map with no key for None optional values: $m")
+        m.contains("age") should be(false)
+      }
+
+      "return a map with keys for Some optional values" in {
+        val cc = CCOptionalFields("FL", Some(10))
+        val m = cc.toMapWithNoKeysForEmptyOptionalValues
+        m should not be null
+        println(s"cc to map with key for Some optional values: $m")
+        m.contains("age") should be(true)
       }
     }
   }
